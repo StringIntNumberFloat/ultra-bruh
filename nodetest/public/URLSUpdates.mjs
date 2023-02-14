@@ -2,8 +2,11 @@ const URLtypes = {'hum' : 6, 'temp_hum' : 4};
 let updateRate = 2000;
 
 export let URLvalues = {'hum' : [], 'temp_hum' : []};
+export let updateURLS = updateURLSMod
+export let sleep = sleepMod
 
-function sleep(milliseconds) {
+
+function sleepMod(milliseconds) {
     const date = Date.now();
     let currentDate = null;
     do {
@@ -12,7 +15,7 @@ function sleep(milliseconds) {
 }
 
 
-function updateURLS() {
+function updateURLSMod() {
     for (let type in URLtypes) {
         for (let n = 1; n <= URLtypes[type]; n++) {
 
@@ -37,11 +40,11 @@ function updateURLS() {
     }
 }
 
-async function URLSloop() {
+/*async function URLSloop() {
     while (true) {
         updateURLS();
         sleep(updateRate);
     }
-}
+}*/
 
-URLSloop()
+//URLSloop()
