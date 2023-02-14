@@ -5,31 +5,31 @@ window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "Temperature of Each Boiler"
+		text: "Humidity of Each Sensor"
 	},
 	axisY: {
-		title: "Temperature (°C)",
+		title: "Humidity (%)",
 		includeZero: true,
-		suffix: " °C"
+		suffix: " %"
 	},
 	data: [{
 		type: "column",	
-		yValueFormatString: "#,### °C",
+		yValueFormatString: "##,## %",
 		indexLabel: "{y}",
 		dataPoints: [
-			{ label: "boiler1", y: 206 },
-			{ label: "boiler2", y: 163 },
-			{ label: "boiler3", y: 154 },
-			{ label: "boiler4", y: 176 },
-			{ label: "boiler5", y: 184 },
-			{ label: "boiler6", y: 122 }
+			{ label: "Sensor 1", y: 206 },
+			{ label: "Sensor 2", y: 163 },
+			{ label: "Sensor 3", y: 154 },
+			{ label: "Sensor 4", y: 176 },
+			{ label: "Sensor 5", y: 184 },
+			{ label: "Sensor 6", y: 122 }
 		]
 	}]
 });
 
 function updateChart() {
 
-	var boilerColor, deltaY, yVal;
+	var sensorColor, deltaY, yVal;
 	var dps = chart.options.data[0].dataPoints;
 	for (var i = 0; i < dps.length; i++) {
 		if ( URLvalues['hum'].length < 7 ) { continue }
@@ -37,8 +37,8 @@ function updateChart() {
 		yVal = URLvalues['hum'][i+1]['humidity']
 
 		//color 
-		boilerColor = yVal > 200 ? "#FF2500" : yVal >= 170 ? "#FF6000" : yVal < 170 ? "#6B8E23 " : null;
-		dps[i] = {label: "Boiler "+(i+1) , y: yVal, color: boilerColor};
+		sensorColor = yVal > 200 ? "#FF2500" : yVal >= 170 ? "#FF6000" : yVal < 170 ? "#6B8E23 " : null;
+		dps[i] = {label: "Sensor "+(i+1) , y: yVal, color: sensorColor};
 	}
 	chart.options.data[0].dataPoints = dps; 
 	chart.render();
