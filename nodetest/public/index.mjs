@@ -1,9 +1,10 @@
 import { URLvalues } from "./URLSUpdates.mjs";
+import { updateURLS } from "./URLSUpdates.mjs";
 
 function updateFrontURLS() {
 
-    console.log(URLvalues)
-
+    updateURLS()
+    
     for (let type in URLtypes) {
         for (let n = 1; n <= URLvalues[type].length-1; n++) {
             const element = document.getElementById(type+String(n));
